@@ -67,30 +67,27 @@ function generateMarkdown(data) {
 
   ## Installation
   To install necessary dependencies, run the following command:
-
-  // come back to this
-
-  \```md\  
-  ${data.installation}
-  \```\
+   \`\`\`\ md
+   ${data.installation}
+   \`\`\`\
 
   ## Usage
   ${data.usage}
 
-  ##License
+  ## License
   This project is licesed under the ${data.license} license.
 
-  ##Contributing
+  ## Contributing
   ${data.contribute}
 
-  ##Tests
+  ## Tests
   To run tests, run the following command:
 
-  // come back to this
-  md  
+  \`\`\`\ md
   ${data.test}
-
-  ##Questions
+  \`\`\`\
+  
+  ## Questions
   If you have any questions about the repo, open an issue or contact me directly at ${data.email}. You can find more of my work at ${data.username}.
 
   `;
@@ -98,8 +95,7 @@ function generateMarkdown(data) {
 
 
 
-  renderLicenseBadge(process.argv[2]);
-  renderLicenseLink(process.argv[2]);
+  
 // fs.writeFile('log.txt', process.argv[2], (err) =>
 //   err ? console.error(err) : console.log('Success!')
 // );
