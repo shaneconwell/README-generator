@@ -1,69 +1,92 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 
-
 function renderLicenseBadge(license) {
   switch (license) {
-    case "mit":
-      console.log("https://img.shields.io/badge/license-MIT-brightgreen");
-      break;
-    case "apache":
-      console.log(
-        "https://img.shields.io/badge/license-APACHE%202.0-brightgreen"
-      );
-      break;
-    case "gpl":
-      console.log("https://img.shields.io/badge/license-GPL%203.0-brightgreen");
-      break;
-    case "bsd":
-      console.log("https://img.shields.io/badge/license-BSD%203-brightgreen");
-      break;
+    case "MIT":
+     return "https://img.shields.io/badge/license-MIT-brightgreen";
+      
+    case "APACHE 2.0":
+      return "https://img.shields.io/badge/license-APACHE%202.0-brightgreen";
+      
+    case "GPL 3.0":
+      return"https://img.shields.io/badge/license-GPL%203.0-brightgreen";
+     
+    case "BSD 3":
+      return"https://img.shields.io/badge/license-BSD%203-brightgreen";
+      
     default:
-      console.log("none");
+     return"";
   }
 }
-
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
+
 function renderLicenseLink(license) {
+
   switch (license) {
-    case 'mit':
-      console.log("https://opensource.org/licenses/MIT");
-      break;
-    case 'apache':
-      console.log("https://opensource.org/licenses/Apache-2.0");
-      break;
-    case 'gpl':
-      console.log("https://opensource.org/licenses/GPL-3.0");
-      break;
-    case 'bsd':
-      console.log("https://opensource.org/licenses/BSD-3-Clause");
-      break;
+    case 'MIT':
+      return "https://opensource.org/licenses/MIT";
+    
+    case 'APACHE 2.0':
+      return"https://opensource.org/licenses/Apache-2.0";
+      
+    case 'GPL 3.0':
+      return"https://opensource.org/licenses/GPL-3.0";
+      
+    case 'BSD 3':
+      return"https://opensource.org/licenses/BSD-3-Clause";
+      
     default:
-      console.log('none');
+      console.log('');
   }
 
 }
-
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(license) {}
+function renderLicenseSection(license) {
+  switch (license) {
+    case 'MIT':
+      return "This project is licensed under the [MIT]('https://opensource.org/licenses/MIT') license.";
+    
+    case 'APACHE 2.0':
+      return "This project is licensed under the [APACHE 2.0]('https://opensource.org/licenses/Apache-2.0') license.";
+      
+    case 'GPL 3.0':
+      return"This project is licensed under the [GPL 3.0](https://opensource.org/licenses/GPL-3.0) license.";
+    case 'BSD 3':
+      return"This project is licensed under the [BSD 3](https://opensource.org/licenses/BSD-3-Clause) license.";
+    case 'None':
+      return "This project has no license";
+    default:
+      return "";
+  }
+}
+
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  return `# Title 
+  
+  let badge = renderLicenseBadge(data.license);
+  let licenseLink = renderLicenseLink(data.license);
+  let licenseSection = renderLicenseSection(data.license);
 
-  ${data.title}
+  return `# ${data.title}  
 
+  <a href="${licenseLink}" alt="License">
+        <img src="${badge}" /></a>
+  
   ## Description
   ${data.description}
 
   ## Table of Contents
   - [Installation](#installation)
   - [Usage](#usage)
-  - [Credits](#credits)
   - [License](#license)
+  - [Contributing](#Contributing)
+  - [Tests](Test)
+  - [Questions](Questions)
 
   ## Installation
   To install necessary dependencies, run the following command:
@@ -75,7 +98,7 @@ function generateMarkdown(data) {
   ${data.usage}
 
   ## License
-  This project is licesed under the ${data.license} license.
+  ${licenseSection}
 
   ## Contributing
   ${data.contribute}
@@ -86,19 +109,11 @@ function generateMarkdown(data) {
   \`\`\`\ md
   ${data.test}
   \`\`\`\
-  
+
   ## Questions
-  If you have any questions about the repo, open an issue or contact me directly at ${data.email}. You can find more of my work at ${data.username}.
+  If you have any questions about the repo, open an issue or contact me directly at [${data.email}](${data.email}). You can find more of my work at [${data.username}](https://github.com/${data.username}).
 
   `;
-  }
-
-
-
-  
-// fs.writeFile('log.txt', process.argv[2], (err) =>
-//   err ? console.error(err) : console.log('Success!')
-// );
-
+}
 
 module.exports = generateMarkdown;
